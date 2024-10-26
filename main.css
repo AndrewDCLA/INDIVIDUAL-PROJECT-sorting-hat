@@ -1,0 +1,85 @@
+body {
+  background: rgb(166,51,46);
+  background: linear-gradient(90deg, rgba(166,51,46,1) 25%, rgba(239,188,47,1) 26%, rgba(239,188,47,1) 50%, rgba(54,100,71,1) 51%, rgba(54,100,71,1) 75%, rgba(60,78,145,1) 76%, rgba(60,78,145,1) 90%);   
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#pageHeader {
+  font-size: xx-large;
+  color: black;
+  
+}
+
+#student-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  
+}
+
+.card {
+  margin: 10px;
+  text-align: center;
+  border-color: gold;
+  border-width: 2px;
+  border-radius: 3rem;
+}
+
+.btn-group {
+  margin: 10px;
+  background-color: rgb(248, 248, 248);
+}
+
+
+.card-gryffindor {
+  border-radius: 3rem;
+  background: rgb(103,0,1);
+  background: linear-gradient(0deg, rgba(103,0,1,1) 60%, rgba(203,153,0,1) 63%, rgba(203,153,0,1) 72%, rgba(103,0,1,1) 74%, rgba(103,0,1,1) 80%, rgba(203,153,0,1) 82%, rgba(203,153,0,1) 90%, rgba(103,0,1,1) 92%); 
+  color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+  
+
+}
+
+.card-hufflepuff {
+  border-radius: 3rem;
+
+  background: rgb(204,153,0);
+  background: linear-gradient(0deg, rgba(204,153,0,1) 60%, rgba(0,0,0,1) 63%, rgba(0,0,0,1) 72%, rgba(204,153,0,1) 74%, rgba(204,153,0,1) 80%, rgba(0,0,0,1) 82%, rgba(0,0,0,1) 90%, rgba(204,153,0,1) 92%); 
+  color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+}
+
+.card-ravenclaw {
+  border-radius: 3rem;
+  background: rgb(5,49,97);
+  background: linear-gradient(0deg, rgba(5,49,97,1) 60%, rgba(134,137,146,1) 63%, rgba(154,151,154,1) 72%, rgba(5,49,97,1) 74%, rgba(0,46,95,1) 80%, rgba(140,141,149,1) 82%, rgba(127,132,144,1) 90%, rgba(22,61,103,1) 92%); 
+  color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+
+}
+
+.card-slytherin {
+  border-radius: 3rem;
+  background: rgb(1,51,0);
+  background: linear-gradient(0deg, rgba(1,51,0,1) 60%, rgba(101,101,101,1) 63%, rgba(101,101,101,1) 72%, rgba(1,51,0,1) 74%, rgba(1,51,0,1) 80%, rgba(101,101,101,1) 82%, rgba(101,101,101,1) 90%, rgba(1,51,0,1) 92%); 
+  color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+
+}
+
+.card-voldemort {
+  border-radius: 3rem;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 60%, rgba(39,17,79,1) 63%, rgba(39,17,79,1) 72%, rgba(0,0,0,1) 74%, rgba(0,0,0,1) 80%, rgba(39,17,79,1) 82%, rgba(39,17,79,1) 90%, rgba(0,0,0,1) 92%); 
+  color: whitesmoke;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: x-large;
+}
