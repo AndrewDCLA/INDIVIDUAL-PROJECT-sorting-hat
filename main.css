@@ -1,8 +1,7 @@
 body {
   background: rgb(166,51,46);
   background: linear-gradient(90deg, rgba(166,51,46,1) 25%, rgba(239,188,47,1) 26%, rgba(239,188,47,1) 50%, rgba(54,100,71,1) 51%, rgba(54,100,71,1) 75%, rgba(60,78,145,1) 76%, rgba(60,78,145,1) 90%);   
-  display: flex;
-  flex-direction: column;
+  
   text-align: center;
 }
 
@@ -12,17 +11,12 @@ body {
   
 }
 
-#student-cards {
-  display: flex;
-  flex-direction: row;
+#sortingHat {
+  display: inline-flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  
 }
 
 .card {
-  display: flex;
-  flex-direction: wrap;
   margin: 10px;
   text-align: center;
   border-color: gold;
@@ -36,7 +30,6 @@ body {
 }
 
 #btn-new {
-  display: flex;
   justify-content: center;
   margin-left: 10px;
   margin-right: 10px
@@ -55,7 +48,6 @@ body {
 
 .card-hufflepuff {
   border-radius: 3rem;
-
   background: rgb(204,153,0);
   background: linear-gradient(0deg, rgba(204,153,0,1) 60%, rgba(0,0,0,1) 63%, rgba(0,0,0,1) 72%, rgba(204,153,0,1) 74%, rgba(204,153,0,1) 80%, rgba(0,0,0,1) 82%, rgba(0,0,0,1) 90%, rgba(204,153,0,1) 92%); 
   color: whitesmoke;

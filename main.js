@@ -2,8 +2,6 @@
 
 
 // Initial buttons
-const studentCards = document.querySelector('#student-cards');
-
 const newEnrolleeForm = document.querySelector('#new-student-teacher-form');
 
 const buttonNewStudentTeacher = document.querySelector('#btn-new-student-teacher');
@@ -144,6 +142,8 @@ const cardsOnDom = (studentsAndTeachers) => {
   renderAll("#sortingHat", domString);
 }
 
+
+
 const filter = (studentsAndTeachers, house) => {
   const houseArray = [];
 
@@ -156,6 +156,9 @@ const filter = (studentsAndTeachers, house) => {
   return houseArray;
 }
   
+
+
+
 
 const form = document.querySelector('form');
 
@@ -171,16 +174,19 @@ const createEnrollee = (e) => {
     occupation: document.querySelector("#occupation").value
   }
 
-  team.push(newEnrolleeObj);
+  studentsAndTeachers.push(newEnrolleeObj);
   cardsOnDom(studentsAndTeachers);
   form.reset();
 }
 
+
+// Event Listeners that make the buttons actually do things.
+
 form.addEventListener('submit', createEnrollee);
 
-const app = document.querySelector("#sortingHat");
+const removeCard = document.querySelector("#sortingHat");
 
-app.addEventListener('click', (e) => {
+removeCard.addEventListener('click', (e) => {
   if (e.target.id.includes("delete")) {
     const [, id] = e.target.id.split("--");
     const index = studentsAndTeachers.findIndex(e => e.id === Number(id));
@@ -188,6 +194,19 @@ app.addEventListener('click', (e) => {
     cardsOnDom(studentsAndTeachers);
   }
 });
+
+
+buttonFilterGryffindor.addEventListener("click", () => {
+  const gryffindorPeople = filter(studentsAndTeachers, "house");
+  renderAll(gryffindorPeople);
+});
+
+buttonFilterHufflepuff.addEventListener("click", () => {
+  const hufflepuffPeople = filter(studentsAndTeachers, "house");
+  renderAll(hufflepuffPeople);
+});
+
+
 
 const sortingHat = () => {
   cardsOnDom(studentsAndTeachers);
