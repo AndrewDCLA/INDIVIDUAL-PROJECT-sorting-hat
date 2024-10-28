@@ -1,25 +1,30 @@
 
 
 
+// Initial buttons
 const studentCards = document.querySelector('#student-cards');
 
-const form = document.querySelector('#new-student-teacher-form');
+const newEnrolleeForm = document.querySelector('#new-student-teacher-form');
 
-const buttonNewStudentTeacher = document.querySelector('#button-new-student-teacher');
+const buttonNewStudentTeacher = document.querySelector('#btn-new-student-teacher');
 
-const buttonEnrollStudentTeacher = document.querySelector('#button-enroll-student-teacher');
+const buttonEnrollStudentTeacher = document.querySelector('#btn-enroll-student-teacher');
 
 const filterStudentButtons = document.querySelector("#filter-buttons")
 
-const buttonFilterAll = document.querySelector('#button-filter-all');
-
+const buttonFilterAll = document.querySelector('#btn-filter-all');
 
 const buttonFilterGryffindor = document.querySelector('#btn-filter-gryffindor');
+
 const buttonFilterHufflepuff = document.querySelector('#btn-filter-hufflepuff');
+
 const buttonFilterRavenclaw = document.querySelector('#btn-filter-ravenclaw');
+
 const buttonFilterSlytherin = document.querySelector('#btn-filter-slytherin');
+
 const buttonFilterVoldemort = document.querySelector('#btn-filter-voldemort');
-const buttonFilterYear = document.querySelector("#btn-filter-year")
+
+const buttonFilterYear = document.querySelector("#btn-filter-year");
 
 
 
@@ -29,7 +34,7 @@ const studentsAndTeachers = [
     name: "Harry Potter",
     house: "Gryffindor",
     year: 2,
-    teacher: false
+    occupation: "Student",
     
   },
 
@@ -38,7 +43,7 @@ const studentsAndTeachers = [
     name: "Hermione Granger",
     house: "Gryffindor",
     year: 2,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -46,7 +51,7 @@ const studentsAndTeachers = [
     name: "Ron Weasley",
     house: "Gryffindor",
     year: 2,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -54,7 +59,7 @@ const studentsAndTeachers = [
     name: "Ginny Weasley",
     house: "Gryffindor",
     year: 1,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -62,7 +67,7 @@ const studentsAndTeachers = [
     name: "Cho Chang",
     house: "Ravenclaw",
     year: 5,
-    teacher: false
+    occupation: "Student",
   },
 
 
@@ -72,7 +77,7 @@ const studentsAndTeachers = [
     name: "Luna Lovegood",
     house: "Ravenclaw",
     year: 1,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -80,7 +85,7 @@ const studentsAndTeachers = [
     name: "Willa Weholt",
     house: "Hufflepuff",
     year: 3,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -88,7 +93,7 @@ const studentsAndTeachers = [
     name: "Cedric Diggory",
     house: "Hufflepuff",
     year: 4,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -96,7 +101,7 @@ const studentsAndTeachers = [
     name: "Draco Malfoy",
     house: "Slytherin",
     year: 2,
-    teacher: false
+    occupation: "Student",
   },
 
   {
@@ -104,7 +109,7 @@ const studentsAndTeachers = [
     name: "Severus Snape",
     house: "Slytherin",
     year: 20,
-    teacher: true
+    occupation: "Teacher",
   },
 
   {
@@ -112,120 +117,83 @@ const studentsAndTeachers = [
     name: "Tom Riddle",
     house: "Voldemort's Army",
     year: 11,
-    teacher: false
+    occupation: "Student",
   },
 
 
-const submitForm = (e) => {
-  e.preventDefault();
 
-  let newStudent = {
-    id: studentsAndTeachers.length + 1,
-    name: document.querySelector("#form-name-input").value,
-    house: sortStudent(),
-    year: document.querySelector("#form-year-input").value,
-  };
 
-  studentsAndTeachers.push(newStudent);
-
-  render(studentsAndTeachers);
-  buttonFilterAll.checked = true;
-  form.reset();
-  toggleForm();
+const renderAll = (divId, htmlToRender) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = htmlToRender;
 };
-
-
-studentCards.addEventListener("click", (e) => {
-  if (e.target.id.includes("expel")) {
-    const [, id] = e.target.id.split("--");
-    const index = studentsAndTeachers.findIndex((e) => e.id === Number(id));
-    studentsAndTeachers[index].house = "Voldemort's Army";
-    render(filter("Voldemort's Army"));
-    buttonFilterVoldemort.checked = true;
+  
+const cardsOnDom = (studentsAndTeachers) => {
+  let domString = "";
+  for (const enrollee of studentsAndTeachers) {
+    domString += `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <p class="card-text">${enrollee.name}</p>
+        <p class="card-text">${enrollee.house}</p>
+        <p class="card-text">${enrollee.year}</p>
+        <p class="card-text">${enrollee.occupation}</p>
+      <button class="btn btn-danger" id="delete--${enrollee.id}">Delete</button>
+    </div>
+  </div>
+  `;
   }
-})
+  renderAll("#sortingHat", domString);
+}
 
+const filter = (studentsAndTeachers, house) => {
+  const houseArray = [];
 
-const filter = (target) => {
-  let filteredStudentsAndTeachers = [];
-
-  studentsAndTeachers.map((studentsAndTeacherObj) => {
-    switch (studentObj.house === target) {
-      case true:
-        filteredStudentsAndTeachers.push(studentsAndTeacherObj);
-        break;
-    };
+  studentsAndTeachers.forEach((enrollee) => {
+    if (enrollee.house === house) {
+      houseArray.push(house);
+    }
   });
 
-  return filteredStudentsAndTeachers;
+  return houseArray;
 }
+  
+
+const form = document.querySelector('form');
 
 
+const createEnrollee = (e) => {
+  e.preventDefault(); 
 
-const renderStudents = (array) => {
-  studentCards.innerHTML = '';
-  array.map((studentsAndTeachersObj) => {
-    studentCards.innerHTML += `
-      <div class="card" style="width: 16rem;">
-        <div class="card-body card-${sortShorten(studentsAndTeachersObj.house)}">
-          <h5 class="card-title">${studentAndTeachersObj.name}</h5>
-          <p class="card-text">${studentAndTeachersObj.house}</p>
-          <p class="card-text">${studentAndTeachersObj.year}</p>
-          <button type="button" class="btn btn-danger" id="expel--${studentsAndTeachersObj.id}">${expelHide(studentObj)}</button>
-        </div>
-      </div>
-    `
-  })
-};
-
-const filterRender = () => {
-  switch (buttonFilterAll.checked === true) {
-    render(studentsAndTeachers);
-    break;
-  } case (buttonFilterGryffindor.checked === true); 
-    render(filter('Gryffindor'));
-    break;
-    case (buttonFilterHufflepuff.checked === true); {
-    render(filter('Hufflepuff'));
-    break;
-  } case (buttonFilterRavenclaw.checked === true); {
-    render(filter('Ravenclaw'))
-    break;
-  } case (buttonFilterSlytherin.checked === true); {
-    render(filter('Slytherin'))
-    break;
-  } case (buttonFilterVoldemort.checked === true); {
-    render(filter("Voldemort's Army"))
-    break;
-  } case (buttonFilterYear.checked === true); {
-    render(filter("Year"))
-    case (buttonFilterYear.checked === true); {
-      render(filter("Year"))
-      break;
-    case (buttonFilterTeacher.checked === true); {
-      render(filter("Teacher"))
-      break;
-    }
+  const newEnrolleeObj = {
+    id: studentsAndTeachers.length + 1,
+    name: document.querySelector("#name").value,
+    email: document.querySelector("#house").value,
+    favoriteColor: document.querySelector("#year").value,
+    image: document.querySelector("#occupation").value
   }
 
+  team.push(newEnrolleeObj);
+  cardsOnDom(studentsAndTeachers);
+  form.reset();
 }
+
+form.addEventListener('submit', createEnrollee);
+
+const app = document.querySelector("#sortingHat");
+
+app.addEventListener('click', (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = studentsAndTeachers.findIndex(e => e.id === Number(id));
+    studentsAndTeachers.splice(index, 1);
+    cardsOnDom(studentsAndTeachers);
+  }
+});
 
 const sortingHat = () => {
-  buttonFilterAll.checked = true;
-  render(studentsAndTeachers);
+  cardsOnDom(studentsAndTeachers);
+
 }
+  
 
-
-
-buttonNew.addEventListener("click", () => {
-  toggleForm();
-});
-
-filterStudentButtons.addEventListener("click", () => {
-  filterRender();
-});
-
-form.addEventListener("submit", submitForm);
-
-
-sortingHat();
+   sortingHat();
