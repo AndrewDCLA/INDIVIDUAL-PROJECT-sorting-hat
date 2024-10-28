@@ -21,6 +21,8 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: wrap;
   margin: 10px;
   text-align: center;
   border-color: gold;
@@ -39,7 +41,7 @@ body {
   margin-left: 10px;
   margin-right: 10px
 }
-
+/* This styling does not function currently. */
 .card-gryffindor {
   border-radius: 3rem;
   background: rgb(103,0,1);

@@ -33,7 +33,7 @@ const studentsAndTeachers = [
     id: 0,
     name: "Harry Potter",
     house: "Gryffindor",
-    year: 2,
+    year: "Year 2",
     occupation: "Student",
     
   },
@@ -42,7 +42,7 @@ const studentsAndTeachers = [
     id: 1,
     name: "Hermione Granger",
     house: "Gryffindor",
-    year: 2,
+    year: "Year 2",
     occupation: "Student",
   },
 
@@ -50,7 +50,7 @@ const studentsAndTeachers = [
     id: 2,
     name: "Ron Weasley",
     house: "Gryffindor",
-    year: 2,
+    year: "Year 2",
     occupation: "Student",
   },
 
@@ -58,7 +58,7 @@ const studentsAndTeachers = [
     id: 3,
     name: "Ginny Weasley",
     house: "Gryffindor",
-    year: 1,
+    year: "Year 1",
     occupation: "Student",
   },
 
@@ -66,7 +66,7 @@ const studentsAndTeachers = [
     id: 4,
     name: "Cho Chang",
     house: "Ravenclaw",
-    year: 5,
+    year: "Year 5",
     occupation: "Student",
   },
 
@@ -76,7 +76,7 @@ const studentsAndTeachers = [
     id: 5,
     name: "Luna Lovegood",
     house: "Ravenclaw",
-    year: 1,
+    year: "Year 1",
     occupation: "Student",
   },
 
@@ -84,7 +84,7 @@ const studentsAndTeachers = [
     id: 6,
     name: "Willa Weholt",
     house: "Hufflepuff",
-    year: 3,
+    year: "Year 3",
     occupation: "Student",
   },
 
@@ -92,7 +92,7 @@ const studentsAndTeachers = [
     id: 7,
     name: "Cedric Diggory",
     house: "Hufflepuff",
-    year: 4,
+    year: "Year 4",
     occupation: "Student",
   },
 
@@ -100,7 +100,7 @@ const studentsAndTeachers = [
     id: 8,
     name: "Draco Malfoy",
     house: "Slytherin",
-    year: 2,
+    year: "Year 2",
     occupation: "Student",
   },
 
@@ -108,7 +108,7 @@ const studentsAndTeachers = [
     id: 9,
     name: "Severus Snape",
     house: "Slytherin",
-    year: 20,
+    year: "Year 20",
     occupation: "Teacher",
   },
 
@@ -116,11 +116,10 @@ const studentsAndTeachers = [
     id: 10,
     name: "Tom Riddle",
     house: "Voldemort's Army",
-    year: 11,
+    year: "Year 11",
     occupation: "Student",
   },
-
-
+]
 
 
 const renderAll = (divId, htmlToRender) => {
@@ -167,9 +166,9 @@ const createEnrollee = (e) => {
   const newEnrolleeObj = {
     id: studentsAndTeachers.length + 1,
     name: document.querySelector("#name").value,
-    email: document.querySelector("#house").value,
-    favoriteColor: document.querySelector("#year").value,
-    image: document.querySelector("#occupation").value
+    house: document.querySelector("#house").value,
+    year: document.querySelector("#year").value,
+    occupation: document.querySelector("#occupation").value
   }
 
   team.push(newEnrolleeObj);
@@ -195,5 +194,4 @@ const sortingHat = () => {
 
 }
   
-
-   sortingHat();
+ sortingHat();
