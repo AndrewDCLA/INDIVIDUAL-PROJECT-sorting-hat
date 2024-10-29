@@ -25,6 +25,11 @@ const buttonFilterVoldemort = document.querySelector('#btn-filter-voldemort');
 const buttonFilterYear = document.querySelector("#btn-filter-year");
 
 
+// const houses =[
+//   "Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin", "Voldemort's Army",
+// ]
+
+
 
 const studentsAndTeachers = [
   {
@@ -197,13 +202,42 @@ removeCard.addEventListener('click', (e) => {
 
 
 buttonFilterGryffindor.addEventListener("click", () => {
-  const gryffindorPeople = filter(studentsAndTeachers, "house");
-  renderAll(gryffindorPeople);
+  const gryffindorPeople = filter(studentsAndTeachers, "Gryffindor");
+  cardsOnDom(gryffindorPeople);
 });
 
 buttonFilterHufflepuff.addEventListener("click", () => {
-  const hufflepuffPeople = filter(studentsAndTeachers, "house");
-  renderAll(hufflepuffPeople);
+  const hufflepuffPeople = filter(studentsAndTeachers, "Hufflepuff");
+  cardsOnDom(hufflepuffPeople);
+});
+
+buttonFilterRavenclaw.addEventListener("click", () => {
+  const ravenclawPeople = filter(studentsAndTeachers, "Ravenclaw");
+  cardsOnDom(ravenclawPeople);
+});
+
+buttonFilterSlytherin.addEventListener("click", () => {
+  const SlytherinPeople = filter(studentsAndTeachers, "Slytherin");
+  cardsOnDom(SlytherinPeople);
+});
+
+buttonFilterVoldemort.addEventListener("click", () => {
+  const VoldemortPeople = filter(studentsAndTeachers, "Voldemort's Army");
+  cardsOnDom(VoldemortPeople);
+});
+
+
+// The code below does not work
+
+
+buttonFilterAll.addEventListener("click", () => {
+  const allStudents = filter(studentsAndTeachers, "Students");
+  cardsOnDom(allStudents);
+});
+
+buttonFilterYear.addEventListener("click", () => {
+  const allYears = filter(studentsAndTeachers, "year");
+  cardsOnDom(allYears);
 });
 
 
