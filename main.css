@@ -17,6 +17,7 @@ body {
 }
 
 .card {
+  background-color: darkgrey;
   margin: 10px;
   text-align: center;
   border-color: gold;
